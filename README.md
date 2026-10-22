@@ -46,9 +46,9 @@
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col justify-between antialiased selection:bg-indigo-500 selection:text-white w-full overflow-x-hidden">
 
-    <!-- Header Container -->
+    <!-- Header Container (화면 전체 폭 확장 방식 적용) -->
     <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30 w-full">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
+        <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 py-3.5 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shrink-0">
                     <i class="fa-solid fa-braille text-2xl text-indigo-200"></i>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="flex items-center gap-2 ml-auto sm:ml-0">
-                <button onclick="openGuideModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-xs font-semibold rounded-xl border border-indigo-400/40 transition-all flex items-center gap-1.5 shadow-sm">
+                <button onclick="openGuideModal()" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-xs font-semibold rounded-xl border border-indigo-400/40 transition-all flex items-center gap-1.5 shadow-sm">
                     <i class="fa-solid fa-circle-question text-indigo-200"></i>
                     <span>반전점자 원리 보기</span>
                 </button>
@@ -71,12 +71,12 @@
         </div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8 flex-grow space-y-6">
+    <!-- Main Content Grid (1600px 확장형 넓은 레이아웃) -->
+    <main class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8 flex-grow space-y-6">
 
         <!-- Input Box Section -->
-        <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200/80 w-full">
-            <div class="flex flex-wrap justify-between items-center gap-3 mb-3">
+        <section class="bg-white rounded-2xl p-5 sm:p-7 shadow-sm border border-slate-200/80 w-full">
+            <div class="flex flex-wrap justify-between items-center gap-3 mb-3.5">
                 <label for="text-input" class="font-bold text-slate-700 text-sm sm:text-base flex items-center gap-2">
                     <i class="fa-solid fa-pen-to-square text-indigo-600"></i>
                     <span>변환할 한글 문장 및 숫자 입력</span>
@@ -84,17 +84,17 @@
                 <!-- Quick Preset Sample Buttons -->
                 <div class="flex flex-wrap items-center gap-1.5">
                     <span class="text-xs text-slate-400 font-medium mr-1 hidden md:inline">예시 문장:</span>
-                    <button onclick="setSample('안녕하세요')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg transition-colors font-medium text-slate-600 active:scale-95">"안녕하세요"</button>
-                    <button onclick="setSample('2026 과학대제전')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg transition-colors font-medium text-slate-600 active:scale-95">"2026 과학대제전"</button>
-                    <button onclick="setSample('도서관 ㅠ 3층')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg transition-colors font-medium text-slate-600 active:scale-95">"도서관 ㅠ 3층"</button>
-                    <button onclick="clearInput()" class="text-xs bg-rose-50 hover:bg-rose-100 text-rose-600 px-2.5 py-1.5 rounded-lg transition-colors font-semibold active:scale-95">초기화</button>
+                    <button onclick="setSample('안녕하세요')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 px-3 py-1.5 rounded-lg transition-colors font-medium text-slate-600 active:scale-95">"안녕하세요"</button>
+                    <button onclick="setSample('2026 과학대제전')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 px-3 py-1.5 rounded-lg transition-colors font-medium text-slate-600 active:scale-95">"2026 과학대제전"</button>
+                    <button onclick="setSample('도서관 ㅠ 3층')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 px-3 py-1.5 rounded-lg transition-colors font-medium text-slate-600 active:scale-95">"도서관 ㅠ 3층"</button>
+                    <button onclick="clearInput()" class="text-xs bg-rose-50 hover:bg-rose-100 text-rose-600 px-3 py-1.5 rounded-lg transition-colors font-semibold active:scale-95">초기화</button>
                 </div>
             </div>
 
             <div class="relative w-full">
                 <textarea id="text-input" rows="3" oninput="convertText()" onkeyup="convertText()" placeholder="여기에 변환할 글자(한글, 숫자, 문장부호)를 입력하세요..." 
-                    class="w-full p-3.5 text-slate-800 bg-slate-50 border border-slate-200 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all resize-none shadow-inner"></textarea>
-                <div class="absolute bottom-3 right-3 text-xs text-slate-400 font-mono pointer-events-none bg-slate-50/80 px-1.5 py-0.5 rounded">
+                    class="w-full p-4 text-slate-800 bg-slate-50 border border-slate-200 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all resize-none shadow-inner"></textarea>
+                <div class="absolute bottom-3 right-3 text-xs text-slate-400 font-mono pointer-events-none bg-slate-50/80 px-2 py-0.5 rounded border border-slate-200/50">
                     <span id="char-count" class="font-bold text-indigo-600">0</span> 자
                 </div>
             </div>
@@ -104,12 +104,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
 
             <!-- 1. Normal Braille Output (Reading Mode) -->
-            <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-indigo-100 flex flex-col justify-between w-full">
+            <section class="bg-white rounded-2xl p-5 sm:p-7 shadow-sm border border-indigo-100 flex flex-col justify-between w-full">
                 <div>
                     <!-- Section Title -->
-                    <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
+                    <div class="flex justify-between items-center pb-3.5 border-b border-slate-100 mb-4">
                         <div class="flex items-center gap-2.5">
-                            <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm shrink-0">
+                            <span class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm shrink-0">
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                             <div>
@@ -117,16 +117,16 @@
                                 <p class="text-[11px] sm:text-xs text-slate-400">손끝 촉각이나 눈으로 읽는 표준 점자</p>
                             </div>
                         </div>
-                        <button onclick="copyToClipboard('normal-braille-text')" class="px-2.5 py-1.5 text-xs font-semibold bg-indigo-50 text-indigo-600 hover:bg-indigo-100 rounded-xl transition-colors flex items-center gap-1 shrink-0 active:scale-95">
+                        <button onclick="copyToClipboard('normal-braille-text')" class="px-3 py-1.5 text-xs font-semibold bg-indigo-50 text-indigo-600 hover:bg-indigo-100 rounded-xl transition-colors flex items-center gap-1.5 shrink-0 active:scale-95">
                             <i class="fa-regular fa-copy"></i>
                             <span>복사</span>
                         </button>
                     </div>
 
                     <!-- Unicode String Preview -->
-                    <div class="mb-4">
-                        <label class="block text-xs font-medium text-slate-500 mb-1">유니코드 점자 텍스트</label>
-                        <div id="normal-braille-text" class="p-3 bg-slate-50 border border-slate-200 rounded-xl braille-unicode-text text-2xl sm:text-3xl tracking-widest text-indigo-900 min-h-[56px] sm:min-h-[64px] break-all flex items-center overflow-x-auto w-full">
+                    <div class="mb-5">
+                        <label class="block text-xs font-medium text-slate-500 mb-1.5">유니코드 점자 텍스트</label>
+                        <div id="normal-braille-text" class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl braille-unicode-text text-2xl sm:text-3xl tracking-widest text-indigo-900 min-h-[64px] break-all flex items-center overflow-x-auto w-full">
                             <span class="text-slate-300 text-sm font-sans">입력 시 실시간 점자 표시</span>
                         </div>
                     </div>
@@ -134,25 +134,25 @@
                     <!-- Visual Cell Grid -->
                     <div>
                         <label class="block text-xs font-medium text-slate-500 mb-2">6점 점자 셀 상세 (좌: 1·2·3 / 우: 4·5·6)</label>
-                        <div id="normal-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3 bg-slate-50/80 rounded-xl border border-slate-200/60 overflow-x-auto w-full">
+                        <div id="normal-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/60 overflow-x-auto w-full">
                             <div class="text-xs text-slate-400 m-auto text-center py-4">입력된 글자가 점자 셀로 분해되어 표시됩니다.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[11px] sm:text-xs text-slate-500">
+                <div class="mt-5 pt-3 border-t border-slate-100 flex items-center gap-2 text-[11px] sm:text-xs text-slate-500">
                     <i class="fa-solid fa-circle-info text-indigo-500 shrink-0"></i>
                     <span>왼쪽 열: 1, 2, 3번 점 | 오른쪽 열: 4, 5, 6번 점</span>
                 </div>
             </section>
 
             <!-- 2. Horizontally Mirrored Braille Output (Stylus Writing Mode) -->
-            <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-emerald-200/80 bg-emerald-50/10 flex flex-col justify-between w-full">
+            <section class="bg-white rounded-2xl p-5 sm:p-7 shadow-sm border border-emerald-200/80 bg-emerald-50/10 flex flex-col justify-between w-full">
                 <div>
                     <!-- Section Title -->
-                    <div class="flex justify-between items-center pb-3 border-b border-emerald-100 mb-4">
+                    <div class="flex justify-between items-center pb-3.5 border-b border-emerald-100 mb-4">
                         <div class="flex items-center gap-2.5">
-                            <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm shrink-0">
+                            <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm shrink-0">
                                 <i class="fa-solid fa-arrows-left-right-to-line"></i>
                             </span>
                             <div>
@@ -163,16 +163,16 @@
                                 <p class="text-[11px] sm:text-xs text-slate-400">점자판과 점필로 종이 뒷면에 찍을 때 사용하는 모양</p>
                             </div>
                         </div>
-                        <button onclick="copyToClipboard('flipped-braille-text')" class="px-2.5 py-1.5 text-xs font-semibold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-xl transition-colors flex items-center gap-1 shrink-0 active:scale-95">
+                        <button onclick="copyToClipboard('flipped-braille-text')" class="px-3 py-1.5 text-xs font-semibold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-xl transition-colors flex items-center gap-1.5 shrink-0 active:scale-95">
                             <i class="fa-regular fa-copy"></i>
                             <span>복사</span>
                         </button>
                     </div>
 
                     <!-- Unicode String Preview -->
-                    <div class="mb-4">
-                        <label class="block text-xs font-medium text-slate-500 mb-1">유니코드 반전 점자 텍스트</label>
-                        <div id="flipped-braille-text" class="p-3 bg-emerald-50/50 border border-emerald-200/60 rounded-xl braille-unicode-text text-2xl sm:text-3xl tracking-widest text-emerald-900 min-h-[56px] sm:min-h-[64px] break-all flex items-center overflow-x-auto w-full">
+                    <div class="mb-5">
+                        <label class="block text-xs font-medium text-slate-500 mb-1.5">유니코드 반전 점자 텍스트</label>
+                        <div id="flipped-braille-text" class="p-3.5 bg-emerald-50/50 border border-emerald-200/60 rounded-xl braille-unicode-text text-2xl sm:text-3xl tracking-widest text-emerald-900 min-h-[64px] break-all flex items-center overflow-x-auto w-full">
                             <span class="text-slate-300 text-sm font-sans">입력 시 좌우 반전 점자 표시</span>
                         </div>
                     </div>
@@ -180,13 +180,13 @@
                     <!-- Visual Cell Grid -->
                     <div>
                         <label class="block text-xs font-medium text-slate-500 mb-2">반전 6점 점자 셀 상세 (좌: 4·5·6 / 우: 1·2·3)</label>
-                        <div id="flipped-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3 bg-emerald-50/30 rounded-xl border border-emerald-200/50 overflow-x-auto w-full">
+                        <div id="flipped-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3.5 bg-emerald-50/30 rounded-xl border border-emerald-200/50 overflow-x-auto w-full">
                             <div class="text-xs text-slate-400 m-auto text-center py-4">반전된 점자 셀이 표시됩니다.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-4 pt-3 border-t border-emerald-100 flex items-center gap-2 text-[11px] sm:text-xs text-emerald-700">
+                <div class="mt-5 pt-3 border-t border-emerald-100 flex items-center gap-2 text-[11px] sm:text-xs text-emerald-700">
                     <i class="fa-solid fa-lightbulb text-emerald-600 shrink-0"></i>
                     <span>종이 뒷면에서 찍은 후 종이를 뒤집으면 1번(정방향) 점자와 정확히 일치합니다.</span>
                 </div>
@@ -195,7 +195,7 @@
         </div>
 
         <!-- Braille Dot Structure Reference Guide -->
-        <section class="bg-slate-800 text-white rounded-2xl p-4 sm:p-6 shadow-sm w-full">
+        <section class="bg-slate-800 text-white rounded-2xl p-5 sm:p-7 shadow-sm w-full">
             <h3 class="font-bold text-sm sm:text-base mb-4 flex items-center gap-2">
                 <i class="fa-solid fa-table-cells text-indigo-400"></i>
                 <span>6점식 점자 기본 번호 배치 및 좌우 반전 구조 비교</span>
@@ -292,7 +292,7 @@
 
     <!-- Footer -->
     <footer class="w-full bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
-        <div class="w-full max-w-7xl mx-auto px-4">
+        <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
             <p>국립국어원 표준 한글 점자 규정 기반 실시간 점자 변환 & 좌우 반전 시뮬레이터</p>
         </div>
     </footer>
