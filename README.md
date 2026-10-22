@@ -19,6 +19,8 @@
             font-family: 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #f1f5f9;
             -webkit-tap-highlight-color: transparent;
+            width: 100%;
+            overflow-x: hidden;
         }
         /* Tactical Dot Visual Effects */
         .braille-dot {
@@ -41,11 +43,11 @@
         }
     </style>
 </head>
-<body class="min-h-screen text-slate-800 flex flex-col justify-between antialiased selection:bg-indigo-500 selection:text-white">
+<body class="min-h-screen text-slate-800 flex flex-col justify-between antialiased selection:bg-indigo-500 selection:text-white w-full">
 
     <!-- Header Container -->
-    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30 w-full">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
+    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30 w-full left-0 right-0">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shrink-0">
                     <i class="fa-solid fa-braille text-2xl text-indigo-200"></i>
@@ -69,12 +71,10 @@
     </header>
 
     <!-- Main Content Grid -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8 flex-grow w-full space-y-6">
+    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8 flex-grow space-y-6">
 
         <!-- Input Box Section -->
-        <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200/80">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                <label for="text-input" class="text-sm sm:text-base font-bold text-slate-800 flex items-center gap-2">
+        <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200/80 w-full">
                     <i class="fa-solid fa-pen-to-square text-indigo-600"></i>
                     <span>변환할 한글 문장 및 숫자 입력</span>
                 </label>
