@@ -47,7 +47,7 @@
 
     <!-- Header Container -->
     <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30 w-full left-0 right-0">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shrink-0">
                     <i class="fa-solid fa-braille text-2xl text-indigo-200"></i>
