@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ko" class="h-full bg-slate-100">
 <head>
     <meta charset="UTF-8">
@@ -43,11 +44,11 @@
         }
     </style>
 </head>
-<body class="min-h-screen text-slate-800 flex flex-col justify-between antialiased selection:bg-indigo-500 selection:text-white w-full">
+<body class="min-h-screen text-slate-800 flex flex-col justify-between antialiased selection:bg-indigo-500 selection:text-white w-full overflow-x-hidden">
 
     <!-- Header Container -->
-    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30 w-full left-0 right-0">
-        <div class="w-full px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
+    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30 w-full">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shrink-0">
                     <i class="fa-solid fa-braille text-2xl text-indigo-200"></i>
@@ -75,6 +76,8 @@
 
         <!-- Input Box Section -->
         <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200/80 w-full">
+            <div class="flex flex-wrap justify-between items-center gap-3 mb-3">
+                <label for="text-input" class="font-bold text-slate-700 text-sm sm:text-base flex items-center gap-2">
                     <i class="fa-solid fa-pen-to-square text-indigo-600"></i>
                     <span>변환할 한글 문장 및 숫자 입력</span>
                 </label>
@@ -88,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="relative">
+            <div class="relative w-full">
                 <textarea id="text-input" rows="3" oninput="convertText()" onkeyup="convertText()" placeholder="여기에 변환할 글자(한글, 숫자, 문장부호)를 입력하세요..." 
                     class="w-full p-3.5 text-slate-800 bg-slate-50 border border-slate-200 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all resize-none shadow-inner"></textarea>
                 <div class="absolute bottom-3 right-3 text-xs text-slate-400 font-mono pointer-events-none bg-slate-50/80 px-1.5 py-0.5 rounded">
@@ -98,10 +101,10 @@
         </section>
 
         <!-- Results Comparison Section Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
 
             <!-- 1. Normal Braille Output (Reading Mode) -->
-            <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-indigo-100 flex flex-col justify-between">
+            <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-indigo-100 flex flex-col justify-between w-full">
                 <div>
                     <!-- Section Title -->
                     <div class="flex justify-between items-center pb-3 border-b border-slate-100 mb-4">
@@ -123,7 +126,7 @@
                     <!-- Unicode String Preview -->
                     <div class="mb-4">
                         <label class="block text-xs font-medium text-slate-500 mb-1">유니코드 점자 텍스트</label>
-                        <div id="normal-braille-text" class="p-3 bg-slate-50 border border-slate-200 rounded-xl braille-unicode-text text-3xl tracking-widest text-indigo-900 min-h-[64px] break-words flex items-center overflow-x-auto">
+                        <div id="normal-braille-text" class="p-3 bg-slate-50 border border-slate-200 rounded-xl braille-unicode-text text-2xl sm:text-3xl tracking-widest text-indigo-900 min-h-[56px] sm:min-h-[64px] break-all flex items-center overflow-x-auto w-full">
                             <span class="text-slate-300 text-sm font-sans">입력 시 실시간 점자 표시</span>
                         </div>
                     </div>
@@ -131,7 +134,7 @@
                     <!-- Visual Cell Grid -->
                     <div>
                         <label class="block text-xs font-medium text-slate-500 mb-2">6점 점자 셀 상세 (좌: 1·2·3 / 우: 4·5·6)</label>
-                        <div id="normal-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3 bg-slate-50/80 rounded-xl border border-slate-200/60 overflow-x-auto">
+                        <div id="normal-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3 bg-slate-50/80 rounded-xl border border-slate-200/60 overflow-x-auto w-full">
                             <div class="text-xs text-slate-400 m-auto text-center py-4">입력된 글자가 점자 셀로 분해되어 표시됩니다.</div>
                         </div>
                     </div>
@@ -144,7 +147,7 @@
             </section>
 
             <!-- 2. Horizontally Mirrored Braille Output (Stylus Writing Mode) -->
-            <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-emerald-200/80 bg-emerald-50/10 flex flex-col justify-between">
+            <section class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-emerald-200/80 bg-emerald-50/10 flex flex-col justify-between w-full">
                 <div>
                     <!-- Section Title -->
                     <div class="flex justify-between items-center pb-3 border-b border-emerald-100 mb-4">
@@ -169,7 +172,7 @@
                     <!-- Unicode String Preview -->
                     <div class="mb-4">
                         <label class="block text-xs font-medium text-slate-500 mb-1">유니코드 반전 점자 텍스트</label>
-                        <div id="flipped-braille-text" class="p-3 bg-emerald-50/50 border border-emerald-200/60 rounded-xl braille-unicode-text text-3xl tracking-widest text-emerald-900 min-h-[64px] break-words flex items-center overflow-x-auto">
+                        <div id="flipped-braille-text" class="p-3 bg-emerald-50/50 border border-emerald-200/60 rounded-xl braille-unicode-text text-2xl sm:text-3xl tracking-widest text-emerald-900 min-h-[56px] sm:min-h-[64px] break-all flex items-center overflow-x-auto w-full">
                             <span class="text-slate-300 text-sm font-sans">입력 시 좌우 반전 점자 표시</span>
                         </div>
                     </div>
@@ -177,7 +180,7 @@
                     <!-- Visual Cell Grid -->
                     <div>
                         <label class="block text-xs font-medium text-slate-500 mb-2">반전 6점 점자 셀 상세 (좌: 4·5·6 / 우: 1·2·3)</label>
-                        <div id="flipped-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3 bg-emerald-50/30 rounded-xl border border-emerald-200/50 overflow-x-auto">
+                        <div id="flipped-braille-grid" class="flex flex-wrap gap-2.5 min-h-[110px] p-3 bg-emerald-50/30 rounded-xl border border-emerald-200/50 overflow-x-auto w-full">
                             <div class="text-xs text-slate-400 m-auto text-center py-4">반전된 점자 셀이 표시됩니다.</div>
                         </div>
                     </div>
@@ -192,7 +195,7 @@
         </div>
 
         <!-- Braille Dot Structure Reference Guide -->
-        <section class="bg-slate-800 text-white rounded-2xl p-4 sm:p-6 shadow-sm">
+        <section class="bg-slate-800 text-white rounded-2xl p-4 sm:p-6 shadow-sm w-full">
             <h3 class="font-bold text-sm sm:text-base mb-4 flex items-center gap-2">
                 <i class="fa-solid fa-table-cells text-indigo-400"></i>
                 <span>6점식 점자 기본 번호 배치 및 좌우 반전 구조 비교</span>
@@ -288,8 +291,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-4 text-center text-xs text-slate-400 border-t border-slate-200 bg-white">
-        <p class="px-4">국립국어원 표준 한글 점자 규정 기반 실시간 점자 변환 & 좌우 반전 시뮬레이터</p>
+    <footer class="w-full bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+        <div class="w-full max-w-7xl mx-auto px-4">
+            <p>국립국어원 표준 한글 점자 규정 기반 실시간 점자 변환 & 좌우 반전 시뮬레이터</p>
+        </div>
     </footer>
 
     <!-- JavaScript Application Logic -->
@@ -303,7 +308,7 @@
         const JUNG_LIST = ['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
         const JONG_LIST = ['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
 
-        // Single Jamo definition table (used for reference)
+        // Single Jamo definition table
         const SINGLE_JAMO_KEYS = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ','ㄲ','ㄸ','ㅃ','ㅆ','ㅉ','ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
 
         const BRAILLE_MAP = {
@@ -375,22 +380,21 @@
                 'ㅀ': [[0,1,0,0,0,0], [0,0,1,0,1,1]],
                 'ㅄ': [[1,1,0,0,0,0], [0,0,1,0,0,0]]
             },
-            // Syllable contractions (JUNG + JONG)
             SYLLABLE_CONTRACT: {
-                'ㅓㄱ': { label: '억(약자)', dots: [1,0,0,1,1,1] }, // 1,4,5,6
-                'ㅓㄴ': { label: '언(약자)', dots: [0,1,1,1,1,1] }, // 2,3,4,5,6
-                'ㅓㄹ': { label: '얼(약자)', dots: [0,1,1,1,1,0] }, // 2,3,4,5
-                'ㅕㄴ': { label: '연(약자)', dots: [1,0,0,0,0,1] }, // 1,6
-                'ㅕㄹ': { label: '열(약자)', dots: [1,1,0,0,1,1] }, // 1,2,5,6
-                'ㅕㅇ': { label: '영(약자)', dots: [1,1,0,1,1,1] }, // 1,2,4,5,6
-                'ㅗㄱ': { label: '옥(약자)', dots: [1,0,1,1,0,1] }, // 1,3,4,6
-                'ㅗㄴ': { label: '온(약자)', dots: [1,1,1,0,1,1] }, // 1,2,3,5,6
-                'ㅗㅇ': { label: '옹(약자)', dots: [1,1,1,1,1,1] }, // 1,2,3,4,5,6
-                'ㅜㄴ': { label: '운(약자)', dots: [1,1,0,1,1,0] }, // 1,2,4,5
-                'ㅜㄹ': { label: '울(약자)', dots: [1,1,1,1,0,1] }, // 1,2,3,4,6
-                'ㅡㄴ': { label: '은(약자)', dots: [1,0,1,0,1,1] }, // 1,3,5,6
-                'ㅡㄹ': { label: '을(약자)', dots: [0,1,1,1,0,1] }, // 2,3,4,6
-                'ㅣㄴ': { label: '인(약자)', dots: [1,1,1,1,1,0] }  // 1,2,3,4,5
+                'ㅓㄱ': { label: '억(약자)', dots: [1,0,0,1,1,1] },
+                'ㅓㄴ': { label: '언(약자)', dots: [0,1,1,1,1,1] },
+                'ㅓㄹ': { label: '얼(약자)', dots: [0,1,1,1,1,0] },
+                'ㅕㄴ': { label: '연(약자)', dots: [1,0,0,0,0,1] },
+                'ㅕㄹ': { label: '열(약자)', dots: [1,1,0,0,1,1] },
+                'ㅕㅇ': { label: '영(약자)', dots: [1,1,0,1,1,1] },
+                'ㅗㄱ': { label: '옥(약자)', dots: [1,0,1,1,0,1] },
+                'ㅗㄴ': { label: '온(약자)', dots: [1,1,1,0,1,1] },
+                'ㅗㅇ': { label: '옹(약자)', dots: [1,1,1,1,1,1] },
+                'ㅜㄴ': { label: '운(약자)', dots: [1,1,0,1,1,0] },
+                'ㅜㄹ': { label: '울(약자)', dots: [1,1,1,1,0,1] },
+                'ㅡㄴ': { label: '은(약자)', dots: [1,0,1,0,1,1] },
+                'ㅡㄹ': { label: '을(약자)', dots: [0,1,1,1,0,1] },
+                'ㅣㄴ': { label: '인(약자)', dots: [1,1,1,1,1,0] }
             },
             NUMBERS: {
                 '1': [1,0,0,0,0,0], '2': [1,1,0,0,0,0], '3': [1,0,0,1,0,0],
@@ -399,46 +403,39 @@
                 '0': [0,1,0,1,1,0]
             },
             PUNCTUATION: {
-                '.': { label: '마침표', dots: [0,1,0,0,1,1] }, // 2,5,6
-                ',': { label: '쉼표', dots: [0,0,0,0,1,0] },   // 5
-                '?': { label: '물음표', dots: [0,1,1,0,0,1] }, // 2,3,6
-                '!': { label: '느낌표', dots: [0,1,1,0,1,0] }, // 2,3,5
-                '-': { label: '붙임표', dots: [0,0,1,0,0,1] }, // 3,6
+                '.': { label: '마침표', dots: [0,1,0,0,1,1] },
+                ',': { label: '쉼표', dots: [0,0,0,0,1,0] },
+                '?': { label: '물음표', dots: [0,1,1,0,0,1] },
+                '!': { label: '느낌표', dots: [0,1,1,0,1,0] },
+                '-': { label: '붙임표', dots: [0,0,1,0,0,1] },
                 '~': { label: '물결표', dots: [0,0,1,0,0,1] },
                 ':': { label: '쌍점', dots: [0,1,0,0,1,0] },
                 ';': { label: '쌍점', dots: [0,1,1,0,1,0] }
             }
         };
 
-        const NUMBER_PREFIX = [0,0,1,1,1,1]; // 수표 ⠼ (3,4,5,6)
+        const NUMBER_PREFIX = [0,0,1,1,1,1];
 
-        // Convert 6-dot array to Unicode Braille Pattern Character (U+2800 ~ U+283F)
         function dotsToUnicode(dots) {
             if (!dots || !Array.isArray(dots)) return ' ';
             let value = 0;
-            if (dots[0]) value |= 0x01; // Dot 1
-            if (dots[1]) value |= 0x02; // Dot 2
-            if (dots[2]) value |= 0x04; // Dot 3
-            if (dots[3]) value |= 0x08; // Dot 4
-            if (dots[4]) value |= 0x10; // Dot 5
-            if (dots[5]) value |= 0x20; // Dot 6
+            if (dots[0]) value |= 0x01;
+            if (dots[1]) value |= 0x02;
+            if (dots[2]) value |= 0x04;
+            if (dots[3]) value |= 0x08;
+            if (dots[4]) value |= 0x10;
+            if (dots[5]) value |= 0x20;
             return String.fromCharCode(0x2800 + value);
         }
 
-        // Mirror Horizontally: Left Col (1,2,3) <-> Right Col (4,5,6)
         function flipDots(dots) {
             if (!dots || !Array.isArray(dots)) return [0,0,0,0,0,0];
             return [
-                dots[3], // New Dot 1 = Old Dot 4
-                dots[4], // New Dot 2 = Old Dot 5
-                dots[5], // New Dot 3 = Old Dot 6
-                dots[0], // New Dot 4 = Old Dot 1
-                dots[1], // New Dot 5 = Old Dot 2
-                dots[2]  // New Dot 6 = Old Dot 3
+                dots[3], dots[4], dots[5],
+                dots[0], dots[1], dots[2]
             ];
         }
 
-        // Standard Korean Text to Braille Translator Engine
         function textToBrailleCells(text) {
             const cells = [];
             let inNumberMode = false;
@@ -447,14 +444,12 @@
                 const char = text[i];
                 const code = char.charCodeAt(0);
 
-                // 1. Space & Newlines
                 if (char === ' ' || char === '\n' || char === '\t') {
                     inNumberMode = false;
                     cells.push({ label: char === '\n' ? '줄바꿈' : '공백', dots: [0,0,0,0,0,0] });
                     continue;
                 }
 
-                // 2. Numbers (0-9)
                 if (char >= '0' && char <= '9') {
                     if (!inNumberMode) {
                         cells.push({ label: '수표(⠼)', dots: NUMBER_PREFIX });
@@ -466,7 +461,6 @@
                     inNumberMode = false;
                 }
 
-                // 3. Korean Syllables (가 - 힣)
                 if (code >= 0xAC00 && code <= 0xD7A3) {
                     const sylIndex = code - 0xAC00;
                     const choIdx = Math.floor(sylIndex / 588);
@@ -477,22 +471,20 @@
                     const jungChar = JUNG_LIST[jungIdx];
                     const jongChar = JONG_LIST[jongIdx];
 
-                    // Check Syllable Special Word Contractions
                     if (char === '가') {
-                        cells.push({ label: '가(약자)', dots: [1,1,0,1,0,1] }); // 1,2,4,6
+                        cells.push({ label: '가(약자)', dots: [1,1,0,1,0,1] });
                         continue;
                     }
                     if (char === '사') {
-                        cells.push({ label: '사(약자)', dots: [1,1,1,0,0,0] }); // 1,2,3
+                        cells.push({ label: '사(약자)', dots: [1,1,1,0,0,0] });
                         continue;
                     }
                     if (char === '것') {
-                        cells.push({ label: '것(약자1)', dots: [0,0,0,1,1,1] }); // 4,5,6
-                        cells.push({ label: '것(약자2)', dots: [0,1,1,1,0,0] }); // 2,3,4
+                        cells.push({ label: '것(약자1)', dots: [0,0,0,1,1,1] });
+                        cells.push({ label: '것(약자2)', dots: [0,1,1,1,0,0] });
                         continue;
                     }
 
-                    // Process Initial Consonant (초성)
                     const isDouble = ['ㄲ','ㄸ','ㅃ','ㅆ','ㅉ'].includes(choChar);
                     let baseCho = choChar;
                     if (isDouble) {
@@ -504,7 +496,6 @@
                         if (choChar === 'ㅉ') baseCho = 'ㅈ';
                     }
 
-                    // '나, 다, 마, 바, 자, 카, 타, 파, 하' - omit 'ㅏ' ONLY when NO final consonant (종성 없음)
                     const isOmitA = ['ㄴ','ㄷ','ㅁ','ㅂ','ㅈ','ㅋ','ㅌ','ㅍ','ㅎ'].includes(baseCho) && jungChar === 'ㅏ' && jongIdx === 0;
 
                     if (baseCho !== 'ㅇ') {
@@ -514,21 +505,18 @@
                         }
                     }
 
-                    // Process Vowel & Final Consonant (중성 & 종성 약자 검사)
                     const jjPair = jungChar + jongChar;
                     const contract = BRAILLE_MAP.SYLLABLE_CONTRACT[jjPair];
 
                     if (contract) {
                         cells.push(contract);
                     } else {
-                        // Vowel
                         if (!isOmitA) {
                             const jungDotsArr = BRAILLE_MAP.JUNG[jungChar];
                             if (jungDotsArr) {
                                 jungDotsArr.forEach(d => cells.push({ label: jungChar, dots: d }));
                             }
                         }
-                        // Final Consonant
                         if (jongChar && BRAILLE_MAP.JONG[jongChar]) {
                             const jongDotsArr = BRAILLE_MAP.JONG[jongChar];
                             jongDotsArr.forEach(d => cells.push({ label: jongChar, dots: d }));
@@ -537,16 +525,13 @@
                     continue;
                 }
 
-                // 4. Single Korean Jamo (단독 자음/모음) - 국립국어원 표준 점자 정식 변환
                 if (SINGLE_JAMO_KEYS.includes(char)) {
-                    // 단독 모음 변환 (예: ㅠ -> 1, 4, 6번 점)
                     if (JUNG_LIST.includes(char)) {
                         const jungDotsArr = BRAILLE_MAP.JUNG[char];
                         if (jungDotsArr) {
                             jungDotsArr.forEach(d => cells.push({ label: char, dots: d }));
                         }
                     } 
-                    // 단독 자음 변환 (초성 점형 및 된소리 규정 적용)
                     else {
                         const isDouble = ['ㄲ','ㄸ','ㅃ','ㅆ','ㅉ'].includes(char);
                         let baseCho = char;
@@ -568,13 +553,11 @@
                     continue;
                 }
 
-                // 5. Punctuation
                 if (BRAILLE_MAP.PUNCTUATION[char]) {
                     cells.push(BRAILLE_MAP.PUNCTUATION[char]);
                     continue;
                 }
 
-                // Fallback for space/other unmapped chars
                 cells.push({ label: char, dots: [0,0,0,0,0,0] });
             }
 
@@ -623,7 +606,6 @@
             }
         }
 
-        // Generate Single Visual 6-Dot Cell Card
         function createCellCard(label, dots, isFlipped) {
             const card = document.createElement('div');
             card.className = `flex flex-col items-center p-2 rounded-xl border ${isFlipped ? 'bg-emerald-50/80 border-emerald-200' : 'bg-white border-slate-200'} shadow-2xs shrink-0 transition-all hover:scale-105`;
@@ -654,19 +636,16 @@
             return card;
         }
 
-        // Preset Sample Button Handler
         function setSample(text) {
             document.getElementById('text-input').value = text;
             convertText();
         }
 
-        // Clear Handler
         function clearInput() {
             document.getElementById('text-input').value = '';
             convertText();
         }
 
-        // Copy to Clipboard
         function copyToClipboard(elementId) {
             const el = document.getElementById(elementId);
             const text = el.innerText;
@@ -690,7 +669,6 @@
             }
         }
 
-        // Toast Helper
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-message').innerText = msg;
@@ -701,7 +679,6 @@
             }, 2500);
         }
 
-        // Modal Handlers
         function openGuideModal() {
             document.getElementById('guide-modal').classList.remove('hidden');
         }
@@ -710,7 +687,6 @@
             document.getElementById('guide-modal').classList.add('hidden');
         }
 
-        // Initial Load Event
         window.addEventListener('DOMContentLoaded', () => {
             setSample('안녕하세요');
         });
